@@ -1,0 +1,95 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.tableWrap {
+  overflow-x: auto;
+  @include custom-scrollbar;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: $fs-sm;
+
+  th {
+    text-align: left;
+    padding: $sp-3 $sp-4;
+    font-size: $fs-xs;
+    font-weight: $fw-semibold;
+    color: $color-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid $color-border;
+
+    [data-theme='light'] & { color: #64748b; border-color: #e2e8f0; }
+  }
+
+  td {
+    padding: $sp-3 $sp-4;
+    border-bottom: 1px solid $color-border-soft;
+    vertical-align: middle;
+
+    [data-theme='light'] & { border-color: #f1f5f9; }
+  }
+
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+}
+
+.profitRow:hover td { background: rgba(31, 214, 147, 0.04) !important; }
+.lossRow:hover  td { background: rgba(255, 77, 109, 0.04) !important; }
+
+.symbol {
+  font-family: $font-mono;
+  font-weight: $fw-semibold;
+  color: $color-ink;
+  [data-theme='light'] & { color: #1e293b; }
+}
+
+.mono {
+  font-family: $font-mono;
+  font-size: $fs-xs;
+  color: $color-ink-soft;
+  [data-theme='light'] & { color: #475569; }
+}
+
+.sideBadge {
+  font-size: $fs-2xs;
+  font-weight: $fw-bold;
+  letter-spacing: 0.05em;
+  padding: 2px 7px;
+  border-radius: $radius-full;
+
+  &.buy  { background: $color-success-bg; color: $color-success; }
+  &.sell { background: $color-danger-bg;  color: $color-danger;  }
+}
+
+.profit { color: $color-success !important; font-weight: $fw-semibold; }
+.loss   { color: $color-danger  !important; font-weight: $fw-semibold; }
+
+.closeBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: $radius-sm;
+  border: 1px solid $color-border;
+  background: transparent;
+  color: $color-muted;
+  cursor: pointer;
+  transition: $transition-fast;
+
+  &:hover {
+    background: $color-danger-bg;
+    border-color: $color-danger;
+    color: $color-danger;
+  }
+}
+
+.empty {
+  padding: $sp-8 $sp-4;
+  text-align: center;
+  color: $color-faint;
+  font-size: $fs-sm;
+}

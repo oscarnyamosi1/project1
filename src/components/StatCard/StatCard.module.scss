@@ -1,0 +1,61 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.card {
+  @include card($sp-6);
+  @include card-hover;
+  display: flex;
+  flex-direction: column;
+  gap: $sp-3;
+  min-height: 148px;
+}
+
+.head {
+  @include flex-between;
+  gap: $sp-3;
+}
+
+.label {
+  font-size: $fs-sm;
+  color: $color-muted;
+  font-weight: $fw-medium;
+}
+
+.icon {
+  width: 40px; height: 40px;
+  border-radius: $radius-md;
+  @include flex-center;
+}
+
+.primary { background: $color-primary-soft; color: $color-primary; }
+.accent  { background: $color-accent-soft;  color: #8a6f24; }
+.success { background: $color-success-bg;   color: $color-success; }
+.info    { background: $color-info-bg;      color: $color-info; }
+.danger  { background: $color-danger-bg;    color: $color-danger; }
+
+.value {
+  font-family: $font-serif;
+  font-size: $fs-3xl;
+  font-weight: $fw-semibold;
+  letter-spacing: -0.02em;
+  color: $color-ink;
+  line-height: 1.1;
+}
+
+.change {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: $fs-xs;
+  font-weight: $fw-semibold;
+}
+
+.up   { color: $color-success; }
+.down { color: $color-danger; }
+
+.changeLabel {
+  color: $color-muted;
+  font-weight: $fw-regular;
+  margin-left: 4px;
+  letter-spacing: 0;
+}

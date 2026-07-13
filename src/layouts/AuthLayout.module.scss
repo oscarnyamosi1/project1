@@ -1,0 +1,69 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.shell {
+  display: flex;
+  min-height: 100vh;
+  background: $color-bg;
+  transition: background $dur-slow $ease;
+  position: relative;
+
+  :global(body[data-theme='jungle']) & { background: #0f2219; }
+  :global(body[data-theme='light'])  & { background: #f1f5f9; }
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  z-index: 29;
+  animation: fadeIn 0.2s ease;
+
+  @include respond-to($bp-md) { display: none; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.body {
+  display: grid;
+  grid-template-columns: 1fr;
+  flex: 1;
+}
+
+.bodyWithPanel {
+  @include respond-to($bp-xl) {
+    grid-template-columns: 1fr 320px;
+  }
+}
+
+.content {
+  padding: $sp-6;
+  min-width: 0;
+
+  @include respond-down($bp-md) { padding: $sp-3; }
+}
+
+.rightPanel {
+  display: none;
+  border-left: 1px solid $color-border;
+  background: $color-bg-soft;
+  padding: $sp-5;
+  transition: background $dur-slow $ease, border-color $dur-slow $ease;
+
+  :global(body[data-theme='jungle']) & { background: #0a1a12; border-left-color: rgba(163,230,53,0.12); }
+  :global(body[data-theme='light'])  & { background: #f8fafc; border-left-color: #e2e8f0; }
+
+  @include respond-to($bp-xl) { display: block; }
+}

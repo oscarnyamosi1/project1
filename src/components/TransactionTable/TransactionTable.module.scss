@@ -1,0 +1,109 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.scroll {
+  overflow-x: auto;
+  @include custom-scrollbar;
+  margin: (-$sp-2);
+  padding: $sp-2;
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: $fs-sm;
+
+  th, td {
+    text-align: left;
+    padding: $sp-4 $sp-4;
+    border-bottom: 1px solid $color-border-soft;
+    vertical-align: middle;
+  }
+
+  th {
+    font-size: $fs-xs;
+    font-weight: $fw-semibold;
+    color: $color-muted;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-bottom-color: $color-border;
+    padding-top: $sp-3;
+    padding-bottom: $sp-3;
+  }
+
+  tbody tr {
+    transition: background $dur-fast;
+    &:hover { background: $color-surface-alt; }
+    &:last-child td { border-bottom: 0; }
+  }
+}
+
+.compact {
+  th, td { padding: $sp-3 $sp-3; }
+}
+
+.typeCell {
+  display: flex;
+  align-items: center;
+  gap: $sp-3;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+}
+
+.typeIcon {
+  width: 36px; height: 36px;
+  border-radius: $radius-md;
+  @include flex-center;
+  flex-shrink: 0;
+}
+
+.success { background: $color-success-bg; color: $color-success; }
+.warning { background: $color-warning-bg; color: $color-warning; }
+.primary { background: $color-primary-soft; color: $color-primary; }
+.accent  { background: $color-accent-soft; color: #8a6f24; }
+
+.typeLabel {
+  font-weight: $fw-semibold;
+  color: $color-ink;
+}
+
+.typeMethod {
+  font-size: $fs-xs;
+  color: $color-muted;
+}
+
+.reference {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: $fs-xs;
+  color: $color-muted;
+}
+
+.amount {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: $fw-semibold;
+}
+
+.plus  { color: $color-success; }
+.minus { color: $color-ink; }
+
+.date {
+  font-size: $fs-xs;
+  color: $color-muted;
+  white-space: nowrap;
+}
+
+.empty {
+  padding: $sp-12 $sp-6;
+  text-align: center;
+  color: $color-muted;
+  font-size: $fs-sm;
+  background: $color-surface-alt;
+  border-radius: $radius-md;
+}

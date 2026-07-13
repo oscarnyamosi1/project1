@@ -1,0 +1,255 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.pauseBanner {
+  display: flex;
+  align-items: center;
+  gap: $sp-3;
+  padding: $sp-3 $sp-5;
+  background: rgba(255, 181, 71, 0.12);
+  border: 1px solid rgba(255, 181, 71, 0.3);
+  border-radius: $radius-md;
+  color: $color-warning;
+  font-size: $fs-sm;
+  font-weight: $fw-medium;
+  margin-bottom: $sp-5;
+}
+
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $sp-4;
+  margin-bottom: $sp-6;
+
+  @media (max-width: $bp-lg) { grid-template-columns: repeat(2, 1fr); }
+}
+
+.stat {
+  @include card($sp-5);
+  display: flex;
+  flex-direction: column;
+  gap: $sp-2;
+
+  [data-theme='jungle'] & { background: #1e3d33; border-color: rgba(163,230,53,0.15); }
+  [data-theme='light']  & { background: #fff; border-color: #e2e8f0; }
+}
+
+.statLabel {
+  font-size: $fs-xs;
+  font-weight: $fw-medium;
+  color: $color-muted;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  [data-theme='light'] & { color: #64748b; }
+}
+
+.statValue {
+  font-family: $font-mono;
+  font-size: $fs-xl;
+  font-weight: $fw-bold;
+  color: $color-ink;
+  letter-spacing: -0.02em;
+
+  [data-theme='jungle'] & { color: #a3e635; }
+  [data-theme='light']  & { color: #1e293b; }
+
+  &.up   { color: $color-success !important; }
+  &.down { color: $color-danger  !important; }
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 200px 1fr 280px;
+  gap: $sp-5;
+  align-items: start;
+
+  @media (max-width: $bp-xl) { grid-template-columns: 180px 1fr 260px; }
+  @media (max-width: $bp-lg) {
+    grid-template-columns: 1fr;
+    .leftCol { display: none; }
+  }
+}
+
+.leftCol, .centerCol, .rightCol { display: flex; flex-direction: column; gap: $sp-4; }
+
+.watchlist {
+  @include card($sp-4);
+  [data-theme='jungle'] & { background: #1e3d33; border-color: rgba(163,230,53,0.15); }
+  [data-theme='light']  & { background: #fff; border-color: #e2e8f0; }
+}
+
+.sectionHead {
+  display: flex;
+  align-items: center;
+  gap: $sp-2;
+  font-size: $fs-xs;
+  font-weight: $fw-semibold;
+  color: $color-muted;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: $sp-3;
+
+  [data-theme='light'] & { color: #64748b; }
+}
+
+.count {
+  margin-left: auto;
+  background: $color-primary-soft;
+  color: $color-primary;
+  font-size: $fs-2xs;
+  font-weight: $fw-bold;
+  padding: 2px 7px;
+  border-radius: $radius-full;
+}
+
+.assetList { display: flex; flex-direction: column; gap: 2px; }
+
+.assetRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $sp-3 $sp-3;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  transition: $transition-fast;
+  border: 1px solid transparent;
+  background: transparent;
+  text-align: left;
+  width: 100%;
+
+  &:hover { background: $color-elevated; }
+
+  &.selected {
+    background: $color-primary-soft;
+    border-color: $color-primary-tint;
+
+    [data-theme='jungle'] & { background: rgba(163,230,53,0.12); border-color: rgba(163,230,53,0.3); }
+  }
+}
+
+.assetInfo { display: flex; flex-direction: column; gap: 2px; }
+.assetSym {
+  font-size: $fs-sm;
+  font-weight: $fw-semibold;
+  color: $color-ink;
+  [data-theme='light'] & { color: #1e293b; }
+}
+.assetCat { font-size: $fs-2xs; color: $color-faint; }
+
+.assetPrice { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+.assetPriceVal {
+  font-family: $font-mono;
+  font-size: $fs-xs;
+  color: $color-ink-soft;
+}
+
+.assetChange {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: $fs-2xs;
+  font-weight: $fw-semibold;
+  &.up   { color: $color-success; }
+  &.down { color: $color-danger;  }
+}
+
+.chartCard {
+  @include card($sp-5);
+  [data-theme='jungle'] & { background: #1e3d33; border-color: rgba(163,230,53,0.15); }
+  [data-theme='light']  & { background: #fff; border-color: #e2e8f0; }
+}
+
+.chartHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $sp-4;
+}
+
+.chartSymbol {
+  font-size: $fs-xl;
+  font-weight: $fw-bold;
+  color: $color-ink;
+  [data-theme='jungle'] & { color: #a3e635; }
+  [data-theme='light']  & { color: #1e293b; }
+}
+.chartName {
+  font-size: $fs-xs;
+  color: $color-muted;
+  [data-theme='light'] & { color: #64748b; }
+}
+
+.livePill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: rgba(31, 214, 147, 0.12);
+  border: 1px solid rgba(31, 214, 147, 0.3);
+  border-radius: $radius-full;
+  font-size: $fs-2xs;
+  font-weight: $fw-bold;
+  color: $color-success;
+  letter-spacing: 0.08em;
+}
+
+.liveDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: $color-success;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.7); }
+}
+
+.positionsCard, .historyCard {
+  @include card($sp-5);
+  [data-theme='jungle'] & { background: #1e3d33; border-color: rgba(163,230,53,0.15); }
+  [data-theme='light']  & { background: #fff; border-color: #e2e8f0; }
+}
+
+.tableWrap { overflow-x: auto; @include custom-scrollbar; }
+
+.histTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: $fs-sm;
+
+  th {
+    text-align: left;
+    padding: $sp-2 $sp-3;
+    font-size: $fs-xs;
+    font-weight: $fw-semibold;
+    color: $color-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid $color-border;
+    [data-theme='light'] & { color: #64748b; border-color: #e2e8f0; }
+  }
+
+  td {
+    padding: $sp-2 $sp-3;
+    border-bottom: 1px solid $color-border-soft;
+    [data-theme='light'] & { border-color: #f1f5f9; }
+  }
+  tr:last-child td { border-bottom: none; }
+}
+
+.mono    { font-family: $font-mono; font-size: $fs-xs; color: $color-ink-soft; [data-theme='light'] & { color: #475569; } }
+.timeTd  { font-size: $fs-xs; color: $color-faint; }
+.profitTd { color: $color-success !important; font-weight: $fw-semibold; }
+.lossTd   { color: $color-danger  !important; font-weight: $fw-semibold; }
+
+.sideBadge {
+  font-size: $fs-2xs;
+  font-weight: $fw-bold;
+  padding: 2px 7px;
+  border-radius: $radius-full;
+  &.buy  { background: $color-success-bg; color: $color-success; }
+  &.sell { background: $color-danger-bg;  color: $color-danger;  }
+}

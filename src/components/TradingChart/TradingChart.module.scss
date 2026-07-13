@@ -1,0 +1,91 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.chartWrap {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-3;
+  height: 100%;
+}
+
+.chartControls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: $sp-3;
+  padding: 0 $sp-2;
+}
+
+.chartTypeToggle {
+  display: flex;
+  background: $color-bg-soft;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  padding: 3px;
+  gap: 2px;
+}
+
+.typeBtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: calc($radius-md - 3px);
+  font-size: $fs-xs;
+  font-weight: $fw-medium;
+  color: $color-muted;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: $transition-fast;
+
+  &:hover {
+    color: $color-ink-soft;
+    background: $color-elevated;
+  }
+
+  &.active {
+    background: $color-primary;
+    color: $color-bg;
+    font-weight: $fw-semibold;
+    box-shadow: 0 0 12px rgba(0, 209, 255, 0.3);
+  }
+}
+
+.chartArea {
+  flex: 1;
+  min-height: 320px;
+  position: relative;
+
+  [data-theme='jungle'] & {
+    .recharts-cartesian-grid line { stroke: rgba(163, 230, 53, 0.06) !important; }
+  }
+}
+
+.candleSvg {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  display: block;
+}
+
+.tooltip {
+  background: $color-surface;
+  border: 1px solid $color-border-strong;
+  border-radius: $radius-md;
+  padding: $sp-3 $sp-4;
+  box-shadow: $shadow-md;
+  font-family: $font-mono;
+}
+
+.tooltipTime {
+  font-size: $fs-xs;
+  color: $color-muted;
+  margin-bottom: 2px;
+}
+
+.tooltipPrice {
+  font-size: $fs-base;
+  font-weight: $fw-semibold;
+  color: $color-ink;
+}

@@ -1,0 +1,156 @@
+// =====================================================
+// Trading Platform — Dark Theme Design Tokens
+// =====================================================
+
+// ---------- Background palette (deep navy stack) ----------
+$color-bg:           #060912;   // Page base — kept static, overridden via body[data-theme]
+$color-bg-soft:      var(--bg-soft,      #0a0f1f);
+$color-surface:      var(--surface,      #0f1626);
+$color-surface-alt:  var(--surface-alt,  #131b2e);
+$color-elevated:     var(--elevated,     #1a2238);
+$color-overlay:      rgba(6, 9, 18, 0.78);
+
+// ---------- Borders ----------
+$color-border:       var(--border,       rgba(255, 255, 255, 0.06));
+$color-border-soft:  var(--border-soft,  rgba(255, 255, 255, 0.04));
+$color-border-strong:var(--border-strong,rgba(255, 255, 255, 0.12));
+
+// ---------- Text ----------
+$color-ink:          var(--ink,          #f4f6fb);
+$color-ink-soft:     var(--ink-soft,     #aab2cc);
+$color-muted:        var(--muted,        #6c7798);
+$color-faint:        var(--faint,        #4a5572);
+$color-disabled:     var(--disabled,     #38415a);
+$color-muted-soft:   $color-faint;       // legacy alias
+
+// ---------- Brand / accent (cyan) ----------
+$color-primary:        #00d1ff;   // Cyan glow
+$color-primary-hover:  #1ad9ff;
+$color-primary-soft:   rgba(0, 209, 255, 0.10);
+$color-primary-tint:   rgba(0, 209, 255, 0.22);
+$color-primary-glow:   rgba(0, 209, 255, 0.40);
+
+// Secondary accent — teal
+$color-accent:         #14d6b1;
+$color-accent-soft:    rgba(20, 214, 177, 0.10);
+
+// ---------- Semantic ----------
+$color-success:       #1fd693;   // Buy / up
+$color-success-bg:    rgba(31, 214, 147, 0.12);
+$color-success-glow:  rgba(31, 214, 147, 0.35);
+
+$color-danger:        #ff4d6d;   // Sell / down
+$color-danger-bg:     rgba(255, 77, 109, 0.12);
+$color-danger-glow:   rgba(255, 77, 109, 0.35);
+
+$color-warning:       #ffb547;
+$color-warning-bg:    rgba(255, 181, 71, 0.12);
+
+$color-info:          #6c8cff;
+$color-info-bg:       rgba(108, 140, 255, 0.12);
+
+// ---------- Chart palette ----------
+$chart-1: #00d1ff;
+$chart-2: #14d6b1;
+$chart-3: #6c8cff;
+$chart-4: #ffb547;
+$chart-5: #ff4d6d;
+$chart-6: #c084fc;
+
+// ---------- Typography ----------
+$font-sans:  'Inter', 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+$font-display:'Manrope', 'Inter', system-ui, sans-serif;
+$font-serif: 'Manrope', 'Inter', sans-serif;
+$font-mono:  'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+$fs-2xs: 0.6875rem;   // 11
+$fs-xs:  0.75rem;     // 12
+$fs-sm:  0.8125rem;   // 13
+$fs-base:0.875rem;    // 14
+$fs-md:  1rem;        // 16
+$fs-lg:  1.125rem;    // 18
+$fs-xl:  1.375rem;    // 22
+$fs-2xl: 1.625rem;    // 26
+$fs-3xl: 2rem;        // 32
+$fs-4xl: 2.5rem;      // 40
+$fs-5xl: 3.25rem;     // 52
+$fs-6xl: 4rem;        // 64
+
+$fw-regular:  400;
+$fw-medium:   500;
+$fw-semibold: 600;
+$fw-bold:     700;
+$fw-extrabold:800;
+
+$lh-tight:    1.15;
+$lh-snug:     1.35;
+$lh-normal:   1.5;
+$lh-relaxed:  1.65;
+
+// ---------- Spacing (4px grid) ----------
+$sp-1:  0.25rem;
+$sp-2:  0.5rem;
+$sp-3:  0.75rem;
+$sp-4:  1rem;
+$sp-5:  1.25rem;
+$sp-6:  1.5rem;
+$sp-7:  1.75rem;
+$sp-8:  2rem;
+$sp-10: 2.5rem;
+$sp-12: 3rem;
+$sp-14: 3.5rem;
+$sp-16: 4rem;
+$sp-20: 5rem;
+$sp-24: 6rem;
+$sp-32: 8rem;
+
+// ---------- Radius ----------
+$radius-xs:  4px;
+$radius-sm:  6px;
+$radius-md:  10px;
+$radius-lg:  14px;
+$radius-xl:  18px;
+$radius-2xl: 24px;
+$radius-full:9999px;
+
+// ---------- Shadows (dark UI – glow + depth) ----------
+$shadow-sm:  0 1px 2px rgba(0, 0, 0, 0.35);
+$shadow-md:  0 6px 20px rgba(0, 0, 0, 0.35);
+$shadow-lg:  0 16px 40px rgba(0, 0, 0, 0.45);
+$shadow-xl:  0 28px 60px rgba(0, 0, 0, 0.55);
+$shadow-glow:         0 0 12px rgba(0, 209, 255, 0.12);
+$shadow-glow-success: 0 0  8px rgba(31, 214, 147, 0.14);
+$shadow-glow-danger:  0 0  8px rgba(255, 77, 109, 0.14);
+
+// ---------- Layout ----------
+$container-max:  1280px;
+$container-wide: 1480px;
+$sidebar-w:      236px;
+$sidebar-w-collapsed: 76px;
+$topbar-h:       72px;
+
+// ---------- Breakpoints ----------
+$bp-sm: 640px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+$bp-2xl:1536px;
+
+// ---------- Motion ----------
+$ease:        cubic-bezier(0.16, 1, 0.3, 1);
+$ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+$dur-fast:    0.15s;
+$dur-base:    0.25s;
+$dur-slow:    0.45s;
+
+$transition-base:  all $dur-base $ease;
+$transition-fast:  all $dur-fast $ease;
+
+// ---------- Gradients ----------
+$grad-bg:     radial-gradient(ellipse at top, rgba(0, 209, 255, 0.07) 0%, transparent 60%),
+              linear-gradient(180deg, #060912 0%, #050810 100%);
+$grad-primary:linear-gradient(135deg, #00d1ff 0%, #14d6b1 100%);
+$grad-card:   linear-gradient(180deg, rgba(26, 34, 56, 0.6) 0%, rgba(15, 22, 38, 0.6) 100%);
+$grad-accent: linear-gradient(135deg, #14d6b1 0%, #00d1ff 100%);
+$grad-danger: linear-gradient(135deg, #ff4d6d 0%, #ff7a8c 100%);
+$grad-success:linear-gradient(135deg, #1fd693 0%, #14d6b1 100%);

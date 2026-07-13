@@ -1,0 +1,442 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $sp-5;
+
+  @include respond-to($bp-xl) {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+// =============== Watchlist ===============
+.watchlist {
+  @include card-glass(0);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.wHead {
+  padding: $sp-4;
+  border-bottom: 1px solid $color-border;
+  display: flex;
+  flex-direction: column;
+  gap: $sp-3;
+}
+
+.searchWrap {
+  display: inline-flex;
+  align-items: center;
+  gap: $sp-2;
+  padding: 0 12px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid $color-border-strong;
+  border-radius: $radius-md;
+  color: $color-muted;
+
+  input {
+    flex: 1;
+    background: transparent;
+    border: 0;
+    outline: none;
+    font-size: $fs-sm;
+    color: $color-ink;
+    &::placeholder { color: $color-faint; }
+  }
+}
+
+.cats {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  @include custom-scrollbar;
+}
+
+.cat {
+  padding: 6px 10px;
+  border-radius: $radius-sm;
+  font-size: $fs-xs;
+  font-weight: $fw-semibold;
+  color: $color-muted;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  transition: $transition-base;
+
+  &:hover { color: $color-ink; }
+}
+
+.catActive {
+  background: rgba(0, 209, 255, 0.10);
+  color: $color-primary !important;
+  border-color: rgba(0, 209, 255, 0.30);
+}
+
+.tableScroll {
+  overflow-x: auto;
+  @include custom-scrollbar;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  thead th {
+    position: sticky; top: 0;
+    background: $color-bg-soft;
+    text-align: left;
+    font-size: 10px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: $color-muted;
+    padding: 10px 14px;
+    border-bottom: 1px solid $color-border;
+    font-weight: $fw-semibold;
+  }
+
+  tbody tr {
+    cursor: pointer;
+    transition: background $dur-fast;
+    border-bottom: 1px solid $color-border-soft;
+
+    &:hover { background: rgba(255, 255, 255, 0.025); }
+  }
+
+  td { padding: 10px 14px; font-size: $fs-sm; vertical-align: middle; }
+}
+
+.rowActive {
+  background: rgba(0, 209, 255, 0.06) !important;
+  box-shadow: inset 3px 0 0 0 $color-primary;
+}
+
+.right { text-align: right; }
+
+.symCell {
+  display: inline-flex;
+  align-items: center;
+  gap: $sp-2;
+
+  strong {
+    font-family: $font-mono;
+    font-weight: $fw-semibold;
+    color: $color-ink;
+    font-size: $fs-sm;
+  }
+}
+
+.symName {
+  display: none;
+  color: $color-muted;
+  font-size: $fs-xs;
+
+  @include respond-to($bp-md) { display: inline; }
+}
+
+.pillSell, .pillBuy {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: $radius-full;
+  font-family: $font-mono;
+  font-size: $fs-xs;
+  font-weight: $fw-bold;
+  letter-spacing: 0.02em;
+  min-width: 76px;
+  text-align: center;
+}
+
+.pillSell {
+  background: rgba(255, 77, 109, 0.10);
+  color: $color-danger;
+  border: 1px solid rgba(255, 77, 109, 0.30);
+}
+
+.pillBuy {
+  background: rgba(31, 214, 147, 0.10);
+  color: $color-success;
+  border: 1px solid rgba(31, 214, 147, 0.30);
+}
+
+.up, .down {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-family: $font-mono;
+  font-weight: $fw-semibold;
+  font-size: $fs-xs;
+}
+.up { color: $color-success; }
+.down { color: $color-danger; }
+
+.spark {
+  width: 78px;
+  height: 28px;
+  margin-left: auto;
+}
+
+.infoIcon { color: $color-faint; }
+
+// =============== Chart card ===============
+.chartCard {
+  @include card-glass(0);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.chartHead {
+  padding: $sp-4 $sp-5;
+  border-bottom: 1px solid $color-border;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $sp-3;
+  flex-wrap: wrap;
+}
+
+.chartTitle {
+  display: inline-flex;
+  align-items: center;
+  gap: $sp-2;
+
+  strong {
+    font-family: $font-mono;
+    font-size: $fs-md;
+    font-weight: $fw-semibold;
+    color: $color-ink;
+  }
+
+  span {
+    font-size: $fs-xs;
+    color: $color-muted;
+  }
+}
+
+.chartPriceRow {
+  display: inline-flex;
+  align-items: baseline;
+  gap: $sp-3;
+  margin-top: 6px;
+}
+
+.chartPrice {
+  font-family: $font-mono;
+  font-size: $fs-2xl;
+  font-weight: $fw-semibold;
+  letter-spacing: -0.01em;
+  color: $color-ink;
+}
+
+.chartHL {
+  font-family: $font-mono;
+  font-size: $fs-xs;
+  color: $color-muted;
+}
+
+.timeframes {
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  padding: 3px;
+  gap: 2px;
+}
+
+.tf {
+  padding: 5px 10px;
+  border-radius: $radius-sm;
+  font-size: 11px;
+  font-family: $font-mono;
+  font-weight: $fw-semibold;
+  color: $color-muted;
+  letter-spacing: 0.04em;
+  transition: $transition-base;
+
+  &:hover { color: $color-ink; }
+}
+
+.tfActive {
+  background: rgba(0, 209, 255, 0.14);
+  color: $color-primary !important;
+  box-shadow: inset 0 0 0 1px rgba(0, 209, 255, 0.30);
+}
+
+.chartBody {
+  height: 360px;
+  padding: $sp-3 $sp-3 $sp-2;
+}
+
+.chartFoot {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid $color-border;
+  padding: $sp-3 $sp-5;
+  gap: $sp-3;
+
+  @include respond-to($bp-md) { grid-template-columns: repeat(4, 1fr); }
+}
+
+.footStat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  span {
+    font-size: 10px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: $color-muted;
+    font-weight: $fw-semibold;
+  }
+
+  strong {
+    font-family: $font-mono;
+    font-size: $fs-sm;
+    color: $color-ink;
+    font-weight: $fw-semibold;
+  }
+}
+
+// =============== Right utility (trade box) ===============
+.tradeBox {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-3;
+}
+
+.tbHead {
+  @include flex-between;
+  padding-bottom: $sp-3;
+  border-bottom: 1px solid $color-border;
+
+  div { display: flex; flex-direction: column; gap: 2px; }
+  strong { font-family: $font-display; font-size: $fs-md; color: $color-ink; font-weight: $fw-bold; }
+  span { font-size: $fs-xs; color: $color-muted; }
+}
+
+.tbStar {
+  width: 32px; height: 32px;
+  border-radius: $radius-sm;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid $color-border;
+  color: $color-muted;
+  @include flex-center;
+  &:hover { color: $color-warning; border-color: rgba(255, 181, 71, 0.30); }
+}
+
+.tbBidAsk {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $sp-2;
+}
+
+.tbSell, .tbBuy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 12px;
+  border-radius: $radius-md;
+  font-family: $font-mono;
+  font-weight: $fw-bold;
+  cursor: pointer;
+  transition: $transition-base;
+
+  span { font-size: 10px; letter-spacing: 0.10em; }
+  strong { font-size: $fs-sm; }
+}
+
+.tbSell {
+  background: rgba(255, 77, 109, 0.10);
+  color: $color-danger;
+  border: 1px solid rgba(255, 77, 109, 0.30);
+  &:hover { background: rgba(255, 77, 109, 0.18); box-shadow: $shadow-glow-danger; }
+}
+
+.tbBuy {
+  background: rgba(31, 214, 147, 0.10);
+  color: $color-success;
+  border: 1px solid rgba(31, 214, 147, 0.30);
+  &:hover { background: rgba(31, 214, 147, 0.18); box-shadow: $shadow-glow-success; }
+}
+
+.tbField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  label {
+    font-size: 10px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: $color-muted;
+    font-weight: $fw-semibold;
+  }
+}
+
+.tbInput {
+  display: grid;
+  grid-template-columns: 36px 1fr 36px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid $color-border-strong;
+  border-radius: $radius-md;
+  overflow: hidden;
+
+  button {
+    background: transparent;
+    color: $color-primary;
+    font-size: $fs-md;
+    font-weight: $fw-bold;
+    &:hover { background: rgba(0, 209, 255, 0.10); }
+  }
+
+  input {
+    border: 0;
+    background: transparent;
+    text-align: center;
+    font-family: $font-mono;
+    font-size: $fs-base;
+    color: $color-ink;
+    outline: none;
+  }
+}
+
+.tbRow {
+  @include flex-between;
+  font-size: $fs-xs;
+  padding: 4px 0;
+
+  span { color: $color-muted; }
+  strong { font-family: $font-mono; color: $color-ink; font-weight: $fw-semibold; }
+}
+
+.tbToggle {
+  font-size: $fs-xs;
+  color: $color-primary;
+  font-weight: $fw-semibold;
+  text-align: left;
+  &:hover { text-decoration: underline; }
+}
+
+.tbCheck {
+  display: inline-flex;
+  align-items: center;
+  gap: $sp-2;
+  font-size: $fs-xs;
+  color: $color-ink-soft;
+  cursor: pointer;
+
+  i {
+    width: 14px; height: 14px;
+    border: 1px solid $color-border-strong;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.03);
+    transition: $transition-base;
+  }
+
+  &:hover i { border-color: $color-primary; }
+}

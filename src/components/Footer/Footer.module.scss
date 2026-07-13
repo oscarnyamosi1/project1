@@ -1,0 +1,126 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.footer {
+  margin-top: $sp-24;
+  background: linear-gradient(180deg, #0a3a2c 0%, #061f18 100%);
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.inner {
+  @include container($container-wide);
+  padding-top: $sp-20;
+  padding-bottom: $sp-8;
+}
+
+.top {
+  display: grid;
+  gap: $sp-12;
+  grid-template-columns: 1fr;
+  padding-bottom: $sp-12;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  @include respond-to($bp-md)  { grid-template-columns: 1.4fr 1fr 1fr; }
+  @include respond-to($bp-lg)  { grid-template-columns: 1.4fr 1fr 1fr 1fr; }
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-5;
+  max-width: 360px;
+}
+
+.tagline {
+  font-size: $fs-sm;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: $lh-relaxed;
+}
+
+.social {
+  display: inline-flex;
+  gap: $sp-2;
+
+  a {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.16);
+    @include flex-center;
+    color: rgba(255,255,255,0.85);
+    transition: $transition-base;
+
+    &:hover { background: $color-accent; color: $color-ink; border-color: $color-accent; }
+  }
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $sp-8;
+  grid-column: 2 / -1;
+
+  @include respond-down($bp-md) { grid-column: auto; }
+}
+
+.column {
+  h4 {
+    color: #ffffff;
+    font-size: $fs-xs;
+    font-weight: $fw-semibold;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: $sp-4;
+  }
+
+  ul { display: flex; flex-direction: column; gap: $sp-2; }
+
+  a {
+    font-size: $fs-sm;
+    color: rgba(255,255,255,0.72);
+    transition: color $dur-fast;
+    &:hover { color: $color-accent; }
+  }
+}
+
+.newsletter {
+  h4 {
+    color: #ffffff;
+    font-size: $fs-md;
+    font-family: $font-serif;
+    font-weight: $fw-semibold;
+    letter-spacing: -0.01em;
+    margin-bottom: $sp-2;
+  }
+
+  p {
+    font-size: $fs-sm;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: $sp-4;
+    line-height: $lh-snug;
+  }
+}
+
+.newsletterForm {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-3;
+
+  input { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.16); color: #ffffff; }
+  input::placeholder { color: rgba(255,255,255,0.4); }
+}
+
+.bottom {
+  @include flex-between;
+  flex-wrap: wrap;
+  gap: $sp-4;
+  padding-top: $sp-6;
+  font-size: $fs-xs;
+  color: rgba(255,255,255,0.6);
+}
+
+.bottomLinks {
+  display: inline-flex;
+  gap: $sp-6;
+
+  a:hover { color: $color-accent; }
+}

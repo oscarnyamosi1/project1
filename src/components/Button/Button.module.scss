@@ -1,0 +1,88 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.btn {
+  @include btn-base;
+  position: relative;
+}
+
+.label { display: inline-flex; align-items: center; }
+.icon  { display: inline-flex; line-height: 0; }
+
+.fullWidth { width: 100%; }
+
+// Sizes
+.sm { height: 36px; padding: 0 $sp-4; font-size: $fs-xs; }
+.md { height: 44px; padding: 0 $sp-5; font-size: $fs-sm; }
+.lg { height: 54px; padding: 0 $sp-8; font-size: $fs-base; border-radius: $radius-lg; }
+
+// Variants
+.primary {
+  background: $color-primary;
+  color: #ffffff;
+  border-color: $color-primary;
+
+  &:hover:not(:disabled) {
+    background: $color-primary-hover;
+    border-color: $color-primary-hover;
+    transform: translateY(-1px);
+    box-shadow: $shadow-md;
+  }
+}
+
+.secondary {
+  background: $color-surface;
+  color: $color-ink;
+  border-color: $color-border;
+
+  &:hover:not(:disabled) {
+    background: $color-surface-alt;
+    border-color: $color-muted-soft;
+  }
+}
+
+.ghost {
+  background: transparent;
+  color: $color-ink;
+
+  &:hover:not(:disabled) {
+    background: $color-primary-soft;
+    color: $color-primary;
+  }
+}
+
+.outline {
+  background: transparent;
+  color: $color-primary;
+  border-color: $color-primary;
+
+  &:hover:not(:disabled) {
+    background: $color-primary;
+    color: #ffffff;
+  }
+}
+
+.danger {
+  background: $color-danger;
+  color: #ffffff;
+  border-color: $color-danger;
+
+  &:hover:not(:disabled) {
+    filter: brightness(0.94);
+    transform: translateY(-1px);
+  }
+}
+
+.loading .label { opacity: 0.6; }
+
+.spinner {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

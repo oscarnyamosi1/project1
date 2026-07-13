@@ -1,0 +1,159 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $sp-5;
+
+  @include respond-to($bp-md) { grid-template-columns: 220px 1fr; }
+}
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  @include card-glass($sp-3);
+}
+
+.tabBtn {
+  display: flex;
+  align-items: center;
+  gap: $sp-3;
+  padding: 10px $sp-3;
+  border-radius: $radius-md;
+  font-size: $fs-sm;
+  font-weight: $fw-medium;
+  color: $color-ink-soft;
+  text-align: left;
+  transition: $transition-base;
+
+  &:hover { background: rgba(255, 255, 255, 0.04); color: $color-ink; }
+}
+
+.tabActive {
+  background: linear-gradient(90deg, rgba(0, 209, 255, 0.14) 0%, rgba(0, 209, 255, 0.04) 100%);
+  color: $color-primary !important;
+  font-weight: $fw-semibold;
+  box-shadow: inset 0 0 0 1px rgba(0, 209, 255, 0.20);
+}
+
+.panel { @include card-glass($sp-6); display: flex; flex-direction: column; gap: $sp-4; }
+
+.panelHead {
+  padding-bottom: $sp-4;
+  border-bottom: 1px solid $color-border;
+
+  h2 {
+    font-family: $font-display;
+    font-size: $fs-xl;
+    font-weight: $fw-bold;
+    color: $color-ink;
+    letter-spacing: -0.02em;
+  }
+  p { margin-top: 6px; font-size: $fs-sm; color: $color-muted; }
+}
+
+.row {
+  @include flex-between;
+  gap: $sp-4;
+  padding: $sp-4 0;
+  border-bottom: 1px solid $color-border-soft;
+
+  &:last-child { border-bottom: 0; }
+}
+
+.rowLeft {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: $sp-3;
+  min-width: 0;
+
+  > div { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  strong { font-size: $fs-sm; color: $color-ink; font-weight: $fw-semibold; }
+  p { font-size: $fs-xs; color: $color-muted; line-height: $lh-snug; }
+}
+
+.rowIcon {
+  width: 36px; height: 36px;
+  border-radius: $radius-sm;
+  @include flex-center;
+  background: rgba(0, 209, 255, 0.10);
+  color: $color-primary;
+  border: 1px solid rgba(0, 209, 255, 0.20);
+  flex-shrink: 0;
+  font-weight: $fw-bold;
+  font-family: $font-mono;
+}
+
+.select {
+  @include input-base;
+  width: auto;
+  min-width: 200px;
+  padding: 8px $sp-3;
+}
+
+.toggle {
+  position: relative;
+  width: 44px; height: 24px;
+  flex-shrink: 0;
+
+  input { opacity: 0; width: 100%; height: 100%; cursor: pointer; }
+  i {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: $radius-full;
+    transition: $transition-base;
+    pointer-events: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 3px; left: 3px;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: $color-muted;
+      transition: $transition-base;
+    }
+  }
+
+  input:checked + i {
+    background: rgba(0, 209, 255, 0.22);
+    box-shadow: inset 0 0 0 1px rgba(0, 209, 255, 0.40);
+
+    &::after {
+      left: 23px;
+      background: $color-primary;
+      box-shadow: 0 0 8px rgba(0, 209, 255, 0.6);
+    }
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-4;
+  max-width: 460px;
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: $sp-2;
+}
+
+.danger {
+  background: rgba(255, 77, 109, 0.04);
+  margin: $sp-3 -$sp-3 0;
+  padding-left: $sp-3;
+  padding-right: $sp-3;
+  border-radius: $radius-md;
+  border-bottom: 0;
+}
+
+.dangerIcon {
+  background: rgba(255, 77, 109, 0.10) !important;
+  color: $color-danger !important;
+  border-color: rgba(255, 77, 109, 0.22) !important;
+}

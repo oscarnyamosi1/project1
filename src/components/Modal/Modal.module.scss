@@ -1,0 +1,79 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(13, 31, 28, 0.45);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+  @include flex-center;
+  padding: $sp-4;
+}
+
+.dialog {
+  width: 100%;
+  background: $color-surface;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-xl;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+}
+
+.sm { max-width: 380px; }
+.md { max-width: 520px; }
+.lg { max-width: 720px; }
+
+.header {
+  @include flex-between;
+  gap: $sp-4;
+  padding: $sp-6 $sp-6 $sp-4;
+}
+
+.title {
+  font-family: $font-serif;
+  font-size: $fs-xl;
+  font-weight: $fw-semibold;
+  letter-spacing: -0.01em;
+  color: $color-ink;
+}
+
+.description {
+  margin-top: $sp-1;
+  font-size: $fs-sm;
+  color: $color-muted;
+  max-width: 36ch;
+}
+
+.close {
+  width: 36px; height: 36px;
+  border-radius: $radius-md;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-muted;
+  flex-shrink: 0;
+  transition: $transition-base;
+
+  &:hover {
+    background: $color-surface-alt;
+    color: $color-ink;
+  }
+}
+
+.body {
+  padding: 0 $sp-6 $sp-6;
+  overflow-y: auto;
+  @include custom-scrollbar;
+}
+
+.footer {
+  display: flex;
+  gap: $sp-3;
+  justify-content: flex-end;
+  padding: $sp-4 $sp-6;
+  border-top: 1px solid $color-border;
+  background: $color-surface-alt;
+}

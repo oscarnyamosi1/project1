@@ -1,0 +1,53 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-2;
+}
+
+.label {
+  font-size: $fs-sm;
+  font-weight: $fw-medium;
+  color: $color-ink-soft;
+}
+
+.wrap { position: relative; display: flex; }
+
+.input {
+  @include input-base;
+  flex: 1;
+}
+
+.padLeft  { padding-left:  46px; }
+.padRight { padding-right: 46px; }
+
+.icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px; height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-muted;
+}
+.left  { left: 14px; }
+.right { right: 14px; }
+
+.toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  &:hover { color: $color-ink; }
+}
+
+.hint  { font-size: $fs-xs; color: $color-muted; }
+.error { font-size: $fs-xs; color: $color-danger; }
+
+.hasError .input {
+  border-color: $color-danger;
+  &:focus { box-shadow: 0 0 0 4px rgba(182, 54, 46, 0.12); }
+}

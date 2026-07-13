@@ -1,0 +1,64 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.stack {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  gap: $sp-3;
+  width: min(380px, calc(100vw - 32px));
+}
+
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: $sp-3;
+  padding: $sp-4;
+  background: $color-surface;
+  border: 1px solid $color-border;
+  border-left-width: 3px;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-lg;
+}
+
+.icon {
+  flex-shrink: 0;
+  width: 28px; height: 28px;
+  border-radius: $radius-md;
+  @include flex-center;
+}
+
+.body { flex: 1; min-width: 0; }
+
+.title {
+  font-size: $fs-sm;
+  font-weight: $fw-semibold;
+  color: $color-ink;
+  margin-bottom: 2px;
+}
+
+.message {
+  font-size: $fs-sm;
+  color: $color-ink-soft;
+  line-height: $lh-snug;
+}
+
+.close {
+  flex-shrink: 0;
+  width: 24px; height: 24px;
+  border-radius: $radius-sm;
+  color: $color-muted;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover { background: $color-surface-alt; color: $color-ink; }
+}
+
+.success { border-left-color: $color-success; .icon { background: $color-success-bg; color: $color-success; } }
+.error   { border-left-color: $color-danger;  .icon { background: $color-danger-bg;  color: $color-danger; } }
+.warning { border-left-color: $color-warning; .icon { background: $color-warning-bg; color: $color-warning; } }
+.info    { border-left-color: $color-info;    .icon { background: $color-info-bg;    color: $color-info; } }

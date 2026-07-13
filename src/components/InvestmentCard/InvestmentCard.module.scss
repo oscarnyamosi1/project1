@@ -1,0 +1,120 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.card {
+  @include card($sp-6);
+  @include card-hover;
+  display: flex;
+  flex-direction: column;
+  gap: $sp-5;
+  height: 100%;
+}
+
+.top {
+  @include flex-between;
+  align-items: flex-start;
+  gap: $sp-4;
+}
+
+.title {
+  margin-top: $sp-3;
+  font-family: $font-serif;
+  font-size: $fs-xl;
+  font-weight: $fw-semibold;
+  letter-spacing: -0.01em;
+  color: $color-ink;
+  line-height: $lh-snug;
+}
+
+.roi {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  text-align: right;
+}
+
+.roiValue {
+  font-family: $font-serif;
+  font-size: $fs-2xl;
+  font-weight: $fw-bold;
+  color: $color-primary;
+  line-height: 1;
+}
+
+.roiLabel {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $color-muted;
+  font-weight: $fw-semibold;
+}
+
+.description {
+  font-size: $fs-sm;
+  color: $color-ink-soft;
+  line-height: $lh-normal;
+  flex: 1;
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: $sp-3;
+  padding: $sp-4;
+  background: $color-surface-alt;
+  border-radius: $radius-md;
+}
+
+.metaItem {
+  display: flex;
+  align-items: flex-start;
+  gap: $sp-2;
+  min-width: 0;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+  }
+}
+
+.metaIcon {
+  flex-shrink: 0;
+  color: $color-primary;
+  margin-top: 2px;
+}
+
+.metaLabel {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $color-muted;
+  font-weight: $fw-semibold;
+}
+
+.metaValue {
+  font-size: $fs-sm;
+  font-weight: $fw-semibold;
+  color: $color-ink;
+}
+
+.footer {
+  @include flex-between;
+  gap: $sp-4;
+  padding-top: $sp-4;
+  border-top: 1px solid $color-border-soft;
+}
+
+.aum {
+  font-size: $fs-sm;
+  font-weight: $fw-semibold;
+  color: $color-ink;
+
+  span {
+    font-weight: $fw-regular;
+    color: $color-muted;
+    margin-left: 4px;
+  }
+}

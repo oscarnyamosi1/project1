@@ -1,0 +1,173 @@
+@use 'variables' as *;
+
+// =================== Layout helpers ===================
+@mixin container($width: $container-max) {
+  width: 100%;
+  max-width: $width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $sp-6;
+  padding-right: $sp-6;
+
+  @media (min-width: $bp-md) {
+    padding-left: $sp-8;
+    padding-right: $sp-8;
+  }
+}
+
+@mixin flex-center { display: flex; align-items: center; justify-content: center; }
+@mixin flex-between { display: flex; align-items: center; justify-content: space-between; }
+
+// =================== Responsive ===================
+@mixin respond-to($bp)   { @media (min-width: $bp) { @content; } }
+@mixin respond-down($bp) { @media (max-width: $bp - 1px) { @content; } }
+
+// =================== Typography ===================
+@mixin heading-display {
+  font-family: $font-display;
+  font-weight: $fw-bold;
+  letter-spacing: -0.025em;
+  line-height: $lh-tight;
+  color: $color-ink;
+}
+
+@mixin section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $color-primary;
+}
+
+// =================== Card patterns ===================
+@mixin card($padding: $sp-6) {
+  background: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  padding: $padding;
+}
+
+@mixin card-glass($padding: $sp-6) {
+  background: var(--card-glass, linear-gradient(180deg, rgba(26, 34, 56, 0.55) 0%, rgba(15, 22, 38, 0.65) 100%));
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  padding: $padding;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+@mixin card-hover {
+  transition: border-color $dur-base $ease, transform $dur-base $ease, box-shadow $dur-base $ease;
+  &:hover {
+    border-color: $color-border-strong;
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
+  }
+}
+
+@mixin glow-border($color: $color-primary) {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba($color, 0.6), transparent 50%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+}
+
+// =================== Form fields ===================
+@mixin input-base {
+  display: block;
+  width: 100%;
+  padding: 11px $sp-4;
+  background: var(--input-bg, #0a0f1f);
+  border: 1px solid $color-border-strong;
+  border-radius: $radius-md;
+  font-family: $font-sans;
+  font-size: $fs-base;
+  color: $color-ink;
+  transition: $transition-base;
+
+  &::placeholder { color: $color-faint; }
+
+  &:hover  { border-color: $color-border-strong; }
+  &:focus  {
+    outline: none;
+    border-color: $color-primary;
+    box-shadow: 0 0 0 3px rgba(0, 209, 255, 0.10);
+  }
+
+  &:disabled { background: $color-elevated; color: $color-disabled; cursor: not-allowed; }
+}
+
+// =================== Buttons ===================
+@mixin btn-base { @include button-base; }   // legacy alias
+
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $sp-2;
+  font-family: $font-sans;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.005em;
+  border-radius: $radius-md;
+  cursor: pointer;
+  transition: $transition-base;
+  white-space: nowrap;
+
+  &:disabled, &[aria-disabled='true'] {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+// =================== Scrollbar ===================
+@mixin custom-scrollbar {
+  &::-webkit-scrollbar { width: 8px; height: 8px; }
+  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: $radius-full;
+    &:hover { background: rgba(255, 255, 255, 0.16); }
+  }
+}
+
+// =================== Truncate ===================
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin clamp-lines($n: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $n;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// =================== Glow chip ===================
+@mixin glow-chip($color) {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: $radius-sm;
+  font-size: $fs-2xs;
+  font-weight: $fw-bold;
+  letter-spacing: 0.04em;
+  background: rgba($color, 0.14);
+  color: $color;
+  border: 1px solid rgba($color, 0.30);
+}

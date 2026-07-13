@@ -1,0 +1,93 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(247, 246, 242, 0.7);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid transparent;
+  transition: $transition-base;
+}
+
+.scrolled {
+  background: rgba(247, 246, 242, 0.92);
+  border-bottom-color: $color-border;
+  box-shadow: 0 1px 0 rgba(13,31,28,0.02);
+}
+
+.inner {
+  @include container;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: $sp-6;
+  height: $navbar-h;
+}
+
+.brand { display: inline-flex; }
+
+.links {
+  display: none;
+  justify-content: center;
+  gap: $sp-8;
+
+  @include respond-to($bp-md) { display: inline-flex; }
+}
+
+.link {
+  font-size: $fs-sm;
+  font-weight: $fw-medium;
+  color: $color-ink-soft;
+  transition: color $dur-fast;
+
+  &:hover { color: $color-primary; }
+}
+
+.actions {
+  display: none;
+  align-items: center;
+  gap: $sp-3;
+
+  @include respond-to($bp-md) { display: inline-flex; }
+}
+
+.menu {
+  width: 40px; height: 40px;
+  border-radius: $radius-md;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-ink;
+  grid-column: 4;
+
+  @include respond-to($bp-md) { display: none; }
+}
+
+.mobile {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-2;
+  padding: $sp-4 $sp-6 $sp-6;
+  background: $color-bg;
+  border-top: 1px solid $color-border;
+
+  @include respond-to($bp-md) { display: none; }
+}
+
+.mobileLink {
+  padding: $sp-3 $sp-4;
+  border-radius: $radius-md;
+  font-weight: $fw-medium;
+
+  &:hover { background: $color-surface; }
+}
+
+.mobileActions {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-3;
+  margin-top: $sp-4;
+}

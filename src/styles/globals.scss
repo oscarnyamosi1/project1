@@ -1,0 +1,164 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+// =====================================================
+// CSS Custom Properties — theme tokens
+// =====================================================
+:root {
+  --surface:       #0f1626;
+  --surface-alt:   #131b2e;
+  --bg-soft:       #0a0f1f;
+  --elevated:      #1a2238;
+  --border:        rgba(255, 255, 255, 0.06);
+  --border-soft:   rgba(255, 255, 255, 0.04);
+  --border-strong: rgba(255, 255, 255, 0.12);
+  --ink:           #f4f6fb;
+  --ink-soft:      #aab2cc;
+  --muted:         #6c7798;
+  --faint:         #4a5572;
+  --disabled:      #38415a;
+  --card-glass:    linear-gradient(180deg, rgba(26, 34, 56, 0.55) 0%, rgba(15, 22, 38, 0.65) 100%);
+  --input-bg:      #0a0f1f;
+}
+
+body[data-theme='jungle'] {
+  --surface:       #142b1e;
+  --surface-alt:   #1a3526;
+  --bg-soft:       #0a1a12;
+  --elevated:      #1e3d2c;
+  --border:        rgba(163, 230, 53, 0.10);
+  --border-soft:   rgba(163, 230, 53, 0.06);
+  --border-strong: rgba(163, 230, 53, 0.18);
+  --ink:           #e4f5d8;
+  --ink-soft:      #9dc99d;
+  --muted:         #6b9b6b;
+  --faint:         #4a7050;
+  --disabled:      #3a5a40;
+  --card-glass:    linear-gradient(180deg, rgba(20, 43, 30, 0.65) 0%, rgba(10, 26, 18, 0.75) 100%);
+  --input-bg:      #0a1a12;
+}
+
+body[data-theme='light'] {
+  --surface:       #ffffff;
+  --surface-alt:   #f8fafc;
+  --bg-soft:       #f1f5f9;
+  --elevated:      #f1f5f9;
+  --border:        rgba(15, 23, 42, 0.09);
+  --border-soft:   rgba(15, 23, 42, 0.06);
+  --border-strong: rgba(15, 23, 42, 0.15);
+  --ink:           #0f172a;
+  --ink-soft:      #334155;
+  --muted:         #64748b;
+  --faint:         #94a3b8;
+  --disabled:      #cbd5e1;
+  --card-glass:    linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(248,250,252,0.96) 100%);
+  --input-bg:      #f8fafc;
+}
+
+body {
+  margin: 0;
+  font-family: $font-sans;
+  font-size: $fs-base;
+  line-height: $lh-normal;
+  color: $color-ink;
+  background: $color-bg;
+  background-image:
+    radial-gradient(ellipse at 20% 0%, rgba(0, 209, 255, 0.04) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 0%, rgba(20, 214, 177, 0.025) 0%, transparent 55%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'cv11', 'ss01', 'ss03';
+  @include custom-scrollbar;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, ol, figure, blockquote { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+
+a { color: inherit; text-decoration: none; }
+
+button {
+  font: inherit;
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+}
+
+input, select, textarea { font: inherit; color: inherit; }
+
+img, svg { display: block; max-width: 100%; }
+
+::selection {
+  background: rgba(0, 209, 255, 0.32);
+  color: $color-ink;
+}
+
+// =====================================================
+// Theme overrides — Jungle Green
+// =====================================================
+body[data-theme='jungle'] {
+  background: #0f2219;
+  background-image:
+    radial-gradient(ellipse at 20% 0%, rgba(74, 222, 128, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 0%, rgba(163, 230, 53, 0.05) 0%, transparent 55%);
+  color: #e8f5e0;
+
+  ::selection { background: rgba(163, 230, 53, 0.3); color: #0a1f0f; }
+}
+
+// =====================================================
+// Theme overrides — Light
+// =====================================================
+body[data-theme='light'] {
+  background: #f1f5f9;
+  background-image:
+    radial-gradient(ellipse at 20% 0%, rgba(59, 130, 246, 0.05) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 0%, rgba(16, 185, 129, 0.04) 0%, transparent 55%);
+  color: #1e293b;
+
+  ::selection { background: rgba(59, 130, 246, 0.25); color: #1e293b; }
+
+  .recharts-cartesian-grid line  { stroke: rgba(0, 0, 0, 0.06) !important; }
+  .recharts-cartesian-axis-tick text { fill: #94a3b8 !important; }
+  .recharts-default-tooltip {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    color: #1e293b !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12) !important;
+  }
+  .recharts-tooltip-label { color: #64748b !important; }
+  .recharts-tooltip-item  { color: #1e293b !important; }
+  .recharts-legend-item-text { color: #64748b !important; }
+}
+
+// =====================================================
+// Recharts dark tweaks (default dark theme)
+// =====================================================
+.recharts-cartesian-grid line  { stroke: rgba(255, 255, 255, 0.04); }
+.recharts-cartesian-axis-line  { stroke: transparent; }
+.recharts-cartesian-axis-tick-line { stroke: transparent; }
+.recharts-cartesian-axis-tick text { fill: #6c7798; font-size: 11px; }
+.recharts-tooltip-wrapper { outline: none; }
+.recharts-default-tooltip {
+  background: #0f1626 !important;
+  border: 1px solid rgba(255, 255, 255, 0.10) !important;
+  border-radius: 10px !important;
+  font-size: 12px !important;
+  color: #f4f6fb !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45) !important;
+  padding: 8px 12px !important;
+}
+.recharts-tooltip-label { color: #aab2cc !important; margin-bottom: 4px !important; }
+.recharts-tooltip-item { color: #f4f6fb !important; }
+.recharts-legend-item-text { color: #aab2cc !important; }
+
+
+.logoImage{
+  max-width: 40px;
+}

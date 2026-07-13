@@ -1,0 +1,36 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.card {
+  @include card($sp-6);
+  display: flex;
+  flex-direction: column;
+  gap: $sp-5;
+}
+
+.header {
+  @include flex-between;
+  align-items: flex-start;
+  gap: $sp-4;
+}
+
+.title {
+  font-family: $font-serif;
+  font-size: $fs-lg;
+  font-weight: $fw-semibold;
+  letter-spacing: -0.01em;
+  color: $color-ink;
+}
+
+.subtitle {
+  margin-top: 2px;
+  font-size: $fs-sm;
+  color: $color-muted;
+}
+
+.action { flex-shrink: 0; }
+
+.body {
+  width: 100%;
+  min-height: 220px;
+}

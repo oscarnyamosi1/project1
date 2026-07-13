@@ -1,0 +1,219 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+// =============== KPI strip ===============
+.kpis {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $sp-3;
+  margin-bottom: $sp-5;
+
+  @include respond-to($bp-sm) { grid-template-columns: repeat(2, 1fr); }
+  @include respond-to($bp-lg) { grid-template-columns: repeat(4, 1fr); }
+}
+
+.kpi {
+  @include card-glass($sp-4);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  > span:first-child {
+    font-size: 10px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: $color-muted;
+    font-weight: $fw-semibold;
+  }
+
+  strong {
+    font-family: $font-mono;
+    font-size: $fs-xl;
+    font-weight: $fw-semibold;
+    letter-spacing: -0.02em;
+    color: $color-ink;
+  }
+}
+
+.kpiMeta { font-size: $fs-xs; color: $color-muted; }
+
+.pos { color: $color-success !important; }
+.mono { font-family: $font-mono; color: $color-ink; }
+
+// =============== Split ===============
+.split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $sp-5;
+  margin-bottom: $sp-5;
+
+  @include respond-to($bp-lg) { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); }
+}
+
+.card {
+  @include card-glass($sp-5);
+  display: flex;
+  flex-direction: column;
+  gap: $sp-4;
+}
+
+.cardHead {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  h3 { font-family: $font-display; font-size: $fs-md; font-weight: $fw-bold; color: $color-ink; }
+  span { font-size: $fs-xs; color: $color-muted; }
+}
+
+.allocBody {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: $sp-5;
+  align-items: center;
+}
+
+.pie { height: 200px; }
+
+.allocLegend {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-2;
+}
+
+.allocLegend li {
+  display: grid;
+  grid-template-columns: 12px 1fr auto;
+  align-items: center;
+  gap: $sp-3;
+  padding: 6px 0;
+  border-bottom: 1px solid $color-border-soft;
+  font-size: $fs-sm;
+  color: $color-ink-soft;
+
+  &:last-child { border-bottom: 0; }
+
+  strong { font-family: $font-mono; color: $color-ink; font-weight: $fw-semibold; }
+}
+
+.dot { width: 10px; height: 10px; border-radius: 3px; }
+
+.barWrap { height: 240px; }
+
+// =============== Holdings card ===============
+.holdingsCard { @include card-glass(0); overflow: hidden; }
+
+.holdingsHead {
+  padding: $sp-4 $sp-5;
+  border-bottom: 1px solid $color-border;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: $sp-3;
+  flex-wrap: wrap;
+
+  h3 { font-family: $font-display; font-size: $fs-md; color: $color-ink; font-weight: $fw-bold; }
+  p { margin-top: 4px; font-size: $fs-xs; color: $color-muted; }
+}
+
+.filters {
+  display: flex;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  padding: 3px;
+  flex-wrap: wrap;
+}
+
+.fbtn {
+  padding: 5px 10px;
+  border-radius: $radius-sm;
+  font-size: $fs-xs;
+  font-weight: $fw-semibold;
+  color: $color-muted;
+  &:hover { color: $color-ink; }
+}
+
+.fActive {
+  background: rgba(0, 209, 255, 0.14);
+  color: $color-primary !important;
+  box-shadow: inset 0 0 0 1px rgba(0, 209, 255, 0.30);
+}
+
+.tableScroll { overflow-x: auto; @include custom-scrollbar; }
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+
+  thead th {
+    text-align: left;
+    font-size: 10px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: $color-muted;
+    padding: 12px 16px;
+    border-bottom: 1px solid $color-border;
+    font-weight: $fw-semibold;
+  }
+
+  tbody tr {
+    transition: background $dur-fast;
+    border-bottom: 1px solid $color-border-soft;
+    &:hover { background: rgba(255, 255, 255, 0.025); }
+  }
+
+  td { padding: 14px 16px; font-size: $fs-sm; color: $color-ink-soft; vertical-align: middle; }
+}
+
+.right { text-align: right; }
+
+.posCell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  strong { color: $color-ink; font-weight: $fw-semibold; font-size: $fs-sm; }
+  span { color: $color-muted; font-size: $fs-xs; }
+}
+
+// =============== Modal ===============
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-5;
+}
+
+.modalSummary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $sp-3;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  padding: $sp-3;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  span {
+    font-size: 10px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: $color-muted;
+    font-weight: $fw-semibold;
+  }
+
+  strong {
+    font-family: $font-mono;
+    font-size: $fs-sm;
+    color: $color-ink;
+    font-weight: $fw-semibold;
+    text-transform: capitalize;
+  }
+}

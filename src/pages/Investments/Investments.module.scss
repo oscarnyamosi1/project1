@@ -1,0 +1,107 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-4;
+  margin-bottom: $sp-6;
+
+  @include respond-to($bp-md) { flex-direction: row; align-items: center; }
+}
+
+.searchWrap {
+  flex-shrink: 0;
+  width: 100%;
+
+  @include respond-to($bp-md) { max-width: 360px; }
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $sp-2;
+  flex: 1;
+
+  @include respond-to($bp-md) { justify-content: flex-end; }
+}
+
+.filterBtn {
+  padding: 8px $sp-4;
+  border-radius: $radius-full;
+  background: $color-surface;
+  border: 1px solid $color-border;
+  font-size: $fs-sm;
+  font-weight: $fw-medium;
+  color: $color-ink-soft;
+  cursor: pointer;
+  transition: $transition-base;
+
+  &:hover { color: $color-primary; border-color: $color-primary-tint; }
+}
+
+.activeFilter {
+  background: $color-primary;
+  color: #ffffff;
+  border-color: $color-primary;
+
+  &:hover { color: #ffffff; }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $sp-5;
+
+  @include respond-to($bp-md) { grid-template-columns: repeat(2, 1fr); }
+  @include respond-to($bp-xl) { grid-template-columns: repeat(3, 1fr); }
+}
+
+.empty {
+  @include card($sp-12);
+  text-align: center;
+
+  h3 {
+    font-family: $font-serif;
+    font-size: $fs-xl;
+    font-weight: $fw-semibold;
+    color: $color-ink;
+  }
+
+  p { margin-top: $sp-2; color: $color-muted; font-size: $fs-sm; }
+}
+
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-5;
+}
+
+.modalSummary {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $sp-3;
+  padding: $sp-4;
+  background: $color-surface-alt;
+  border-radius: $radius-md;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  span {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $color-muted;
+    font-weight: $fw-semibold;
+  }
+
+  strong {
+    font-size: $fs-md;
+    font-weight: $fw-semibold;
+    color: $color-ink;
+  }
+}
